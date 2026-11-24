@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1014
+Vendor: Reliable Logistics
+Invoice Date: 2026-09-24
+Due Date: 2026-10-24
+PO Number: PO-2014
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 5973.79
+Line Total: Rs. 5973.79
+
+Invoice Total: Rs. 5973.79
+
+Payment Terms: Net 30 Days

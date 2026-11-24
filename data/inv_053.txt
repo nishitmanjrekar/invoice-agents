@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1053
+Vendor: Vertex Technologies
+Invoice Date: 2026-10-26
+Due Date: 2026-11-25
+PO Number: PO-2053
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office chairs
+Quantity: 1
+Unit Price: Rs. 13634.20
+Line Total: Rs. 13634.20
+
+Invoice Total: Rs. 13634.20
+
+Payment Terms: Net 30 Days

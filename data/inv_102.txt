@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1102
+Vendor: National Stationers
+Invoice Date: 2026-10-07
+Due Date: 2026-11-06
+PO Number: PO-2102
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer monitors
+Quantity: 1
+Unit Price: Rs. 10349.48
+Line Total: Rs. 10349.48
+
+Invoice Total: Rs. 10349.48
+
+Payment Terms: Net 30 Days

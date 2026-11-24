@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1045
+Vendor: National Stationers
+Invoice Date: 2026-10-06
+Due Date: 2026-11-05
+PO Number: PO-2045
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 1
+Unit Price: Rs. 4401.96
+Line Total: Rs. 4401.96
+
+Invoice Total: Rs. 4401.96
+
+Payment Terms: Net 30 Days

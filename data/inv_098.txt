@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1098
+Vendor: Vertex Technologies
+Invoice Date: 2026-10-16
+Due Date: 2026-11-15
+PO Number: PO-2098
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Electrical components
+Quantity: 1
+Unit Price: Rs. 12646.62
+Line Total: Rs. 12646.62
+
+Invoice Total: Rs. 12646.62
+
+Payment Terms: Net 30 Days

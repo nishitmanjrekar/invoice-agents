@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_085",
+    "category": "clean",
+    "vendor": "Reliable Logistics",
+    "invoice_number": "INV-1085",
+    "invoice_date": "2026-09-16",
+    "due_date": "2026-10-16",
+    "currency": "INR",
+    "total": 5272.67,
+    "po_number": "PO-2085",
+    "po_amount": 5272.67,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

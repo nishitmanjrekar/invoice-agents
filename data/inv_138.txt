@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1138
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-10-30
+Due Date: 2026-11-29
+PO Number: PO-2138
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office chairs
+Quantity: 1
+Unit Price: Rs. 9682.49
+Line Total: Rs. 9682.49
+
+Invoice Total: Rs. 9682.49
+
+Payment Terms: Net 30 Days

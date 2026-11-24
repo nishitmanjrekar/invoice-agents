@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1016
+Vendor: Vertex Technologies
+Invoice Date: 2026-09-07
+Due Date: 2026-10-07
+PO Number: PO-2016
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 9
+Unit Price: Rs. 531.03
+Line Total: Rs. 4779.27
+
+Invoice Total: Rs. 4779.27
+
+Payment Terms: Net 30 Days

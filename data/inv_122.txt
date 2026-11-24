@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1044
+Vendor: TechNova Systems
+Invoice Date: 2026-09-24
+Due Date: 2026-10-24
+PO Number: PO-2044
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer keyboards
+Quantity: 1
+Unit Price: Rs. 11126.94
+Line Total: Rs. 11126.94
+
+Invoice Total: Rs. 11126.94
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1050
+Vendor: TechNova Systems
+Invoice Date: 2026-10-21
+Due Date: 2026-11-20
+PO Number: PO-2050
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Electrical components
+Quantity: 1
+Unit Price: Rs. 4899.63
+Line Total: Rs. 4899.63
+
+Invoice Total: Rs. 4899.63
+
+Payment Terms: Net 30 Days

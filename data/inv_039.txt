@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1039
+Vendor: National Stationers
+Invoice Date: 2026-10-22
+Due Date: 2026-11-21
+PO Number: PO-2039
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Networking equipment
+Quantity: 2
+Unit Price: Rs. 1347.03
+Line Total: Rs. 2694.06
+
+Invoice Total: Rs. 2694.06
+
+Payment Terms: Net 30 Days

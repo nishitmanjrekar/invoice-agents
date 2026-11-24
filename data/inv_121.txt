@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1056
+Vendor: TechNova Systems
+Invoice Date: 2026-10-05
+Due Date: 2026-11-04
+PO Number: PO-2056
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Storage devices
+Quantity: 1
+Unit Price: Rs. 3658.57
+Line Total: Rs. 3658.57
+
+Invoice Total: Rs. 3658.57
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-11-17T12:53:44.822017+00:00",
+  "python": "3.12.7",
+  "scope": "rules engine only (offline, labels replayed; no Gemini extraction)",
+  "dataset_sha256": "62e8107c0b3b74959d408937808f1eee1aad55d67643544b68dc0c52db02ed4f",
+  "dataset_files": 301,
+  "metrics": {
+    "invoices_evaluated": 150,
+    "routing_correct": 150,
+    "routing_accuracy_pct": 100.0,
+    "exact_issue_accuracy_pct": 100.0,
+    "issue_precision_pct": 100.0,
+    "issue_recall_pct": 100.0,
+    "issue_f1_pct": 100.0,
+    "injection_precision_pct": 100.0,
+    "injection_recall_pct": 100.0,
+    "injection_f1_pct": 100.0
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_010",
+    "category": "clean",
+    "vendor": "Prime Industrial",
+    "invoice_number": "INV-1010",
+    "invoice_date": "2026-09-27",
+    "due_date": "2026-10-27",
+    "currency": "INR",
+    "total": 12611.67,
+    "po_number": "PO-2010",
+    "po_amount": 12611.67,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

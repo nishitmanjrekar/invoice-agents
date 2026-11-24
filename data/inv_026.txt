@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1026
+Vendor: Vertex Technologies
+Invoice Date: 2026-10-07
+Due Date: 2026-11-06
+PO Number: PO-2026
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 1
+Unit Price: Rs. 6342.67
+Line Total: Rs. 6342.67
+
+Invoice Total: Rs. 6342.67
+
+Payment Terms: Net 30 Days

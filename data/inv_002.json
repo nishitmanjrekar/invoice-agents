@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_002",
+    "category": "clean",
+    "vendor": "TechNova Systems",
+    "invoice_number": "INV-1002",
+    "invoice_date": "2026-09-23",
+    "due_date": "2026-10-23",
+    "currency": "INR",
+    "total": 11310.6,
+    "po_number": "PO-2002",
+    "po_amount": 11310.6,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

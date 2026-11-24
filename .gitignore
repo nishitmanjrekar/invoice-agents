@@ -1,0 +1,68 @@
+
+# --- secrets ---
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# --- environments ---
+.venv/
+venv/
+
+# --- python ---
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# --- databases and checkpoints (contain invoice data) ---
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3
+
+# --- uploads ---
+data/api_uploads/
+uploads/
+
+# --- backups and archives ---
+backups/
+_archive/
+*.bak
+*.orig
+*_backup.py
+
+# --- logs ---
+*.log
+logs/
+
+# --- generated local artifacts ---
+claude_review_files.txt
+project_structure.txt
+graph_diff.txt
+phase2_inspection.txt
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+# --- internal development files ---
+CLAUDE-PHASE0-PLAN.md
+tools/apply_batchB_patch.py
+tools/apply_batchC_patch.py
+tools/apply_phase0_patches.py
+tools/apply_phase2a_patch.py
+tools/backfill_preview.py
+tools/resume_compat_check.py
+data/empty.txt

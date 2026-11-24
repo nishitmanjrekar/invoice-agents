@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1091
+Vendor: Reliable Logistics
+Invoice Date: 2026-10-29
+Due Date: 2026-11-28
+PO Number: PO-2091
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer monitors
+Quantity: 1
+Unit Price: Rs. 8095.32
+Line Total: Rs. 8095.32
+
+Invoice Total: Rs. 8095.32
+
+Payment Terms: Net 30 Days

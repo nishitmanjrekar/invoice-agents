@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_118",
+    "category": "duplicate",
+    "vendor": "Global Office Solutions",
+    "invoice_number": "INV-1046",
+    "invoice_date": "2026-10-17",
+    "due_date": "2026-11-16",
+    "currency": "INR",
+    "total": 2357.03,
+    "po_number": "PO-2046",
+    "po_amount": 2357.03,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "duplicate_invoice"
+    ],
+    "duplicate_of": "inv_046",
+    "security_flag": false
+}

@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_116",
+    "category": "duplicate",
+    "vendor": "Vertex Technologies",
+    "invoice_number": "INV-1054",
+    "invoice_date": "2026-10-12",
+    "due_date": "2026-11-11",
+    "currency": "INR",
+    "total": 4712.84,
+    "po_number": "PO-2054",
+    "po_amount": 4712.84,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "duplicate_invoice"
+    ],
+    "duplicate_of": "inv_054",
+    "security_flag": false
+}

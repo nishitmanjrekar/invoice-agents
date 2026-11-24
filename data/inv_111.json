@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_111",
+    "category": "duplicate",
+    "vendor": "Bright Electronics",
+    "invoice_number": "INV-1043",
+    "invoice_date": "2026-10-16",
+    "due_date": "2026-11-15",
+    "currency": "INR",
+    "total": 4898.68,
+    "po_number": "PO-2043",
+    "po_amount": 4898.68,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "duplicate_invoice"
+    ],
+    "duplicate_of": "inv_043",
+    "security_flag": false
+}

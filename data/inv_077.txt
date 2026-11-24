@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1077
+Vendor: Acme Supplies
+Invoice Date: 2026-09-29
+Due Date: 2026-10-29
+PO Number: PO-2077
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer keyboards
+Quantity: 9
+Unit Price: Rs. 1409.37
+Line Total: Rs. 12684.33
+
+Invoice Total: Rs. 12684.33
+
+Payment Terms: Net 30 Days

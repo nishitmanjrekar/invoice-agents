@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1105
+Vendor: Bright Electronics
+Invoice Date: 2026-10-03
+Due Date: 2026-11-02
+PO Number: PO-2105
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office chairs
+Quantity: 1
+Unit Price: Rs. 4424.58
+Line Total: Rs. 4424.58
+
+Invoice Total: Rs. 4424.58
+
+Payment Terms: Net 30 Days

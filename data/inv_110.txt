@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1110
+Vendor: Bright Electronics
+Invoice Date: 2026-10-18
+Due Date: 2026-11-17
+PO Number: PO-2110
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 1
+Unit Price: Rs. 5014.10
+Line Total: Rs. 5014.10
+
+Invoice Total: Rs. 5014.10
+
+Payment Terms: Net 30 Days

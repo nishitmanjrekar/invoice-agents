@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1021
+Vendor: Prime Industrial
+Invoice Date: 2026-09-19
+Due Date: 2026-10-19
+PO Number: PO-2021
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Stationery supplies
+Quantity: 1
+Unit Price: Rs. 2954.82
+Line Total: Rs. 2954.82
+
+Invoice Total: Rs. 2954.82
+
+Payment Terms: Net 30 Days

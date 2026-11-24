@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1058
+Vendor: National Stationers
+Invoice Date: 2026-09-12
+Due Date: 2026-10-12
+PO Number: PO-2058
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer keyboards
+Quantity: 1
+Unit Price: Rs. 8039.91
+Line Total: Rs. 8039.91
+
+Invoice Total: Rs. 8039.91
+
+Payment Terms: Net 30 Days

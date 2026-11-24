@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1084
+Vendor: Acme Supplies
+Invoice Date: 2026-10-22
+Due Date: 2026-11-21
+PO Number: PO-2084
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Electrical components
+Quantity: 1
+Unit Price: Rs. 13020.31
+Line Total: Rs. 13020.31
+
+Invoice Total: Rs. 13020.31
+
+Payment Terms: Net 30 Days

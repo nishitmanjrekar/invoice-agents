@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1094
+Vendor: Reliable Logistics
+Invoice Date: 2026-09-09
+Due Date: 2026-10-09
+PO Number: PO-2094
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Stationery supplies
+Quantity: 1
+Unit Price: Rs. 10499.58
+Line Total: Rs. 10499.58
+
+Invoice Total: Rs. 10499.58
+
+Payment Terms: Net 30 Days

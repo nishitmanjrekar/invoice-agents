@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1008
+Vendor: Prime Industrial
+Invoice Date: 2026-09-20
+Due Date: 2026-10-20
+PO Number: PO-2008
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Stationery supplies
+Quantity: 1
+Unit Price: Rs. 12299.80
+Line Total: Rs. 12299.80
+
+Invoice Total: Rs. 12299.80
+
+Payment Terms: Net 30 Days

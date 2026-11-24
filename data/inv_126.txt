@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1126
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-10-28
+Due Date: 2026-11-27
+PO Number: PO-2126
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer keyboards
+Quantity: 1
+Unit Price: Rs. 6784.75
+Line Total: Rs. 6784.75
+
+Invoice Total: Rs. 6784.75
+
+Payment Terms: Net 30 Days

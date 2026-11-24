@@ -1,0 +1,13 @@
+{
+    "total_invoices": 150,
+    "random_seed": 42,
+    "categories": {
+        "clean": 90,
+        "amount_mismatch": 20,
+        "duplicate": 15,
+        "unknown_vendor": 15,
+        "injection": 10
+    },
+    "expected_auto_approvals": 90,
+    "expected_human_reviews": 60
+}

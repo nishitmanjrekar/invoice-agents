@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1096
+Vendor: TechNova Systems
+Invoice Date: 2026-10-12
+Due Date: 2026-11-11
+PO Number: PO-2096
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer monitors
+Quantity: 3
+Unit Price: Rs. 1461.40
+Line Total: Rs. 4384.20
+
+Invoice Total: Rs. 4384.20
+
+Payment Terms: Net 30 Days

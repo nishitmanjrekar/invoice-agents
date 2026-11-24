@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1069
+Vendor: Prime Industrial
+Invoice Date: 2026-09-15
+Due Date: 2026-10-15
+PO Number: PO-2069
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office chairs
+Quantity: 9
+Unit Price: Rs. 1062.61
+Line Total: Rs. 9563.49
+
+Invoice Total: Rs. 9563.49
+
+Payment Terms: Net 30 Days

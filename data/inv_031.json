@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_031",
+    "category": "clean",
+    "vendor": "Bright Electronics",
+    "invoice_number": "INV-1031",
+    "invoice_date": "2026-09-18",
+    "due_date": "2026-10-18",
+    "currency": "INR",
+    "total": 3139.75,
+    "po_number": "PO-2031",
+    "po_amount": 3139.75,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

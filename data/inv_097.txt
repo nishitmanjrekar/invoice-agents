@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1097
+Vendor: Prime Industrial
+Invoice Date: 2026-10-17
+Due Date: 2026-11-16
+PO Number: PO-2097
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 5
+Unit Price: Rs. 1507.08
+Line Total: Rs. 7535.40
+
+Invoice Total: Rs. 7535.40
+
+Payment Terms: Net 30 Days

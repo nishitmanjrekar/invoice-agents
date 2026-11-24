@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_096",
+    "category": "amount_mismatch",
+    "vendor": "TechNova Systems",
+    "invoice_number": "INV-1096",
+    "invoice_date": "2026-10-12",
+    "due_date": "2026-11-11",
+    "currency": "INR",
+    "total": 4384.2,
+    "po_number": "PO-2096",
+    "po_amount": 3685.76,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "amount_mismatch"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1002
+Vendor: TechNova Systems
+Invoice Date: 2026-09-23
+Due Date: 2026-10-23
+PO Number: PO-2002
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 11310.60
+Line Total: Rs. 11310.60
+
+Invoice Total: Rs. 11310.60
+
+Payment Terms: Net 30 Days

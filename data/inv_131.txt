@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1131
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-10-14
+Due Date: 2026-11-13
+PO Number: PO-2131
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 1468.77
+Line Total: Rs. 1468.77
+
+Invoice Total: Rs. 1468.77
+
+Payment Terms: Net 30 Days

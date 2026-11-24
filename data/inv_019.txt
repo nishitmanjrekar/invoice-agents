@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1019
+Vendor: Bright Electronics
+Invoice Date: 2026-09-30
+Due Date: 2026-10-30
+PO Number: PO-2019
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 1
+Unit Price: Rs. 13783.91
+Line Total: Rs. 13783.91
+
+Invoice Total: Rs. 13783.91
+
+Payment Terms: Net 30 Days

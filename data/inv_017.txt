@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1017
+Vendor: Reliable Logistics
+Invoice Date: 2026-09-17
+Due Date: 2026-10-17
+PO Number: PO-2017
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 1
+Unit Price: Rs. 12799.93
+Line Total: Rs. 12799.93
+
+Invoice Total: Rs. 12799.93
+
+Payment Terms: Net 30 Days

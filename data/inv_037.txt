@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1037
+Vendor: Vertex Technologies
+Invoice Date: 2026-09-07
+Due Date: 2026-10-07
+PO Number: PO-2037
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 1
+Unit Price: Rs. 14501.08
+Line Total: Rs. 14501.08
+
+Invoice Total: Rs. 14501.08
+
+Payment Terms: Net 30 Days

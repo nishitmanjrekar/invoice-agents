@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1049
+Vendor: Bright Electronics
+Invoice Date: 2026-10-08
+Due Date: 2026-11-07
+PO Number: PO-2049
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Storage devices
+Quantity: 1
+Unit Price: Rs. 3662.92
+Line Total: Rs. 3662.92
+
+Invoice Total: Rs. 3662.92
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1028
+Vendor: Reliable Logistics
+Invoice Date: 2026-10-09
+Due Date: 2026-11-08
+PO Number: PO-2028
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Electrical components
+Quantity: 3
+Unit Price: Rs. 853.91
+Line Total: Rs. 2561.73
+
+Invoice Total: Rs. 2561.73
+
+Payment Terms: Net 30 Days

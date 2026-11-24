@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1073
+Vendor: Prime Industrial
+Invoice Date: 2026-10-20
+Due Date: 2026-11-19
+PO Number: PO-2073
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 8075.73
+Line Total: Rs. 8075.73
+
+Invoice Total: Rs. 8075.73
+
+Payment Terms: Net 30 Days

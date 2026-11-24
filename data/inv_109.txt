@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1109
+Vendor: Bright Electronics
+Invoice Date: 2026-09-17
+Due Date: 2026-10-17
+PO Number: PO-2109
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Electrical components
+Quantity: 1
+Unit Price: Rs. 13107.66
+Line Total: Rs. 13107.66
+
+Invoice Total: Rs. 13107.66
+
+Payment Terms: Net 30 Days

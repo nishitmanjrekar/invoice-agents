@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1004
+Vendor: Acme Supplies
+Invoice Date: 2026-09-21
+Due Date: 2026-10-21
+PO Number: PO-2004
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Storage devices
+Quantity: 1
+Unit Price: Rs. 8857.43
+Line Total: Rs. 8857.43
+
+Invoice Total: Rs. 8857.43
+
+Payment Terms: Net 30 Days

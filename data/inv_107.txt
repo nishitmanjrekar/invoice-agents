@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1107
+Vendor: Reliable Logistics
+Invoice Date: 2026-09-27
+Due Date: 2026-10-27
+PO Number: PO-2107
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Storage devices
+Quantity: 1
+Unit Price: Rs. 15202.83
+Line Total: Rs. 15202.83
+
+Invoice Total: Rs. 15202.83
+
+Payment Terms: Net 30 Days

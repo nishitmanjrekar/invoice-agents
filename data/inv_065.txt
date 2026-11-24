@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1065
+Vendor: Reliable Logistics
+Invoice Date: 2026-09-07
+Due Date: 2026-10-07
+PO Number: PO-2065
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office chairs
+Quantity: 2
+Unit Price: Rs. 7003.13
+Line Total: Rs. 14006.26
+
+Invoice Total: Rs. 14006.26
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1029
+Vendor: Acme Supplies
+Invoice Date: 2026-10-05
+Due Date: 2026-11-04
+PO Number: PO-2029
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 1
+Unit Price: Rs. 14353.42
+Line Total: Rs. 14353.42
+
+Invoice Total: Rs. 14353.42
+
+Payment Terms: Net 30 Days

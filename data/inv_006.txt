@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1006
+Vendor: Vertex Technologies
+Invoice Date: 2026-10-27
+Due Date: 2026-11-26
+PO Number: PO-2006
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Networking equipment
+Quantity: 1
+Unit Price: Rs. 5763.51
+Line Total: Rs. 5763.51
+
+Invoice Total: Rs. 5763.51
+
+Payment Terms: Net 30 Days

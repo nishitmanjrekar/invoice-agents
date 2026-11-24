@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1067
+Vendor: Bright Electronics
+Invoice Date: 2026-10-28
+Due Date: 2026-11-27
+PO Number: PO-2067
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 8082.39
+Line Total: Rs. 8082.39
+
+Invoice Total: Rs. 8082.39
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_100",
+    "category": "amount_mismatch",
+    "vendor": "Prime Industrial",
+    "invoice_number": "INV-1100",
+    "invoice_date": "2026-10-15",
+    "due_date": "2026-11-14",
+    "currency": "INR",
+    "total": 8885.98,
+    "po_number": "PO-2100",
+    "po_amount": 8216.33,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "amount_mismatch"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1046
+Vendor: Global Office Solutions
+Invoice Date: 2026-10-17
+Due Date: 2026-11-16
+PO Number: PO-2046
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Storage devices
+Quantity: 1
+Unit Price: Rs. 2357.03
+Line Total: Rs. 2357.03
+
+Invoice Total: Rs. 2357.03
+
+Payment Terms: Net 30 Days

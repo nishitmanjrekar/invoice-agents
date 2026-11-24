@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1129
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-09-13
+Due Date: 2026-10-13
+PO Number: PO-2129
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 1
+Unit Price: Rs. 7768.09
+Line Total: Rs. 7768.09
+
+Invoice Total: Rs. 7768.09
+
+Payment Terms: Net 30 Days

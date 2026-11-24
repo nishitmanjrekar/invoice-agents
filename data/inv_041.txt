@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1041
+Vendor: Acme Supplies
+Invoice Date: 2026-09-26
+Due Date: 2026-10-26
+PO Number: PO-2041
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Printer cartridges
+Quantity: 1
+Unit Price: Rs. 1993.90
+Line Total: Rs. 1993.90
+
+Invoice Total: Rs. 1993.90
+
+Payment Terms: Net 30 Days

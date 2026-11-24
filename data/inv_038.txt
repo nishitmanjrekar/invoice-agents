@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1038
+Vendor: Prime Industrial
+Invoice Date: 2026-09-24
+Due Date: 2026-10-24
+PO Number: PO-2038
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Electrical components
+Quantity: 1
+Unit Price: Rs. 6585.89
+Line Total: Rs. 6585.89
+
+Invoice Total: Rs. 6585.89
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1095
+Vendor: Prime Industrial
+Invoice Date: 2026-09-22
+Due Date: 2026-10-22
+PO Number: PO-2095
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Stationery supplies
+Quantity: 1
+Unit Price: Rs. 10730.06
+Line Total: Rs. 10730.06
+
+Invoice Total: Rs. 10730.06
+
+Payment Terms: Net 30 Days

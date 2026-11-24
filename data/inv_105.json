@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_105",
+    "category": "amount_mismatch",
+    "vendor": "Bright Electronics",
+    "invoice_number": "INV-1105",
+    "invoice_date": "2026-10-03",
+    "due_date": "2026-11-02",
+    "currency": "INR",
+    "total": 4424.58,
+    "po_number": "PO-2105",
+    "po_amount": 3462.41,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "amount_mismatch"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}

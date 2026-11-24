@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1139
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-09-30
+Due Date: 2026-10-30
+PO Number: PO-2139
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Storage devices
+Quantity: 7
+Unit Price: Rs. 1337.14
+Line Total: Rs. 9359.98
+
+Invoice Total: Rs. 9359.98
+
+Payment Terms: Net 30 Days

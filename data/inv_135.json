@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_135",
+    "category": "unknown_vendor",
+    "vendor": "Unknown Traders Pvt Ltd",
+    "invoice_number": "INV-1135",
+    "invoice_date": "2026-10-23",
+    "due_date": "2026-11-22",
+    "currency": "INR",
+    "total": 6075.73,
+    "po_number": "PO-2135",
+    "po_amount": 6075.73,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "unknown_or_unapproved_vendor"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}

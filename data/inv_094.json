@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_094",
+    "category": "amount_mismatch",
+    "vendor": "Reliable Logistics",
+    "invoice_number": "INV-1094",
+    "invoice_date": "2026-09-09",
+    "due_date": "2026-10-09",
+    "currency": "INR",
+    "total": 10499.58,
+    "po_number": "PO-2094",
+    "po_amount": 10287.42,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "amount_mismatch"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}

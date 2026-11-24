@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1036
+Vendor: TechNova Systems
+Invoice Date: 2026-10-01
+Due Date: 2026-10-31
+PO Number: PO-2036
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 3
+Unit Price: Rs. 3412.17
+Line Total: Rs. 10236.51
+
+Invoice Total: Rs. 10236.51
+
+Payment Terms: Net 30 Days

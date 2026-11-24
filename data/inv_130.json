@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_130",
+    "category": "unknown_vendor",
+    "vendor": "Unknown Traders Pvt Ltd",
+    "invoice_number": "INV-1130",
+    "invoice_date": "2026-10-06",
+    "due_date": "2026-11-05",
+    "currency": "INR",
+    "total": 8514.2,
+    "po_number": "PO-2130",
+    "po_amount": 8514.2,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "unknown_or_unapproved_vendor"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}

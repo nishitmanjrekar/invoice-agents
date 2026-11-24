@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1070
+Vendor: Prime Industrial
+Invoice Date: 2026-10-30
+Due Date: 2026-11-29
+PO Number: PO-2070
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 1
+Unit Price: Rs. 14044.58
+Line Total: Rs. 14044.58
+
+Invoice Total: Rs. 14044.58
+
+Payment Terms: Net 30 Days

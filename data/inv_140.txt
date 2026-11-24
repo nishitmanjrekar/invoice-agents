@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1140
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-10-24
+Due Date: 2026-11-23
+PO Number: PO-2140
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer monitors
+Quantity: 2
+Unit Price: Rs. 4736.62
+Line Total: Rs. 9473.24
+
+Invoice Total: Rs. 9473.24
+
+Payment Terms: Net 30 Days

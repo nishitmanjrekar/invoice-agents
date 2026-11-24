@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1047
+Vendor: Vertex Technologies
+Invoice Date: 2026-09-20
+Due Date: 2026-10-20
+PO Number: PO-2047
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 7538.35
+Line Total: Rs. 7538.35
+
+Invoice Total: Rs. 7538.35
+
+Payment Terms: Net 30 Days

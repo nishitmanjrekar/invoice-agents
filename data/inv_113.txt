@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1089
+Vendor: Acme Supplies
+Invoice Date: 2026-10-27
+Due Date: 2026-11-26
+PO Number: PO-2089
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 2614.78
+Line Total: Rs. 2614.78
+
+Invoice Total: Rs. 2614.78
+
+Payment Terms: Net 30 Days

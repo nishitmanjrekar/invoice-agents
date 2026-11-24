@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1043
+Vendor: Bright Electronics
+Invoice Date: 2026-10-05
+Due Date: 2026-11-04
+PO Number: PO-2043
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Stationery supplies
+Quantity: 4
+Unit Price: Rs. 1224.67
+Line Total: Rs. 4898.68
+
+Invoice Total: Rs. 4898.68
+
+Payment Terms: Net 30 Days

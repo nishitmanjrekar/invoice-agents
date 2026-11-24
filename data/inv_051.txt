@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1051
+Vendor: Global Office Solutions
+Invoice Date: 2026-10-02
+Due Date: 2026-11-01
+PO Number: PO-2051
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 1708.24
+Line Total: Rs. 1708.24
+
+Invoice Total: Rs. 1708.24
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1010
+Vendor: Prime Industrial
+Invoice Date: 2026-09-27
+Due Date: 2026-10-27
+PO Number: PO-2010
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer monitors
+Quantity: 1
+Unit Price: Rs. 12611.67
+Line Total: Rs. 12611.67
+
+Invoice Total: Rs. 12611.67
+
+Payment Terms: Net 30 Days

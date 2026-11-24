@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_042",
+    "category": "clean",
+    "vendor": "Global Office Solutions",
+    "invoice_number": "INV-1042",
+    "invoice_date": "2026-09-11",
+    "due_date": "2026-10-11",
+    "currency": "INR",
+    "total": 13675.88,
+    "po_number": "PO-2042",
+    "po_amount": 13675.88,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1130
+Vendor: Unknown Traders Pvt Ltd
+Invoice Date: 2026-10-06
+Due Date: 2026-11-05
+PO Number: PO-2130
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Stationery supplies
+Quantity: 1
+Unit Price: Rs. 8514.20
+Line Total: Rs. 8514.20
+
+Invoice Total: Rs. 8514.20
+
+Payment Terms: Net 30 Days

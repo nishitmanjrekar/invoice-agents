@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_059",
+    "category": "clean",
+    "vendor": "Acme Supplies",
+    "invoice_number": "INV-1059",
+    "invoice_date": "2026-10-31",
+    "due_date": "2026-11-30",
+    "currency": "INR",
+    "total": 14450.9,
+    "po_number": "PO-2059",
+    "po_amount": 14450.9,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

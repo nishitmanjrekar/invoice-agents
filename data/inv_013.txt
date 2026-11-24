@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1013
+Vendor: Prime Industrial
+Invoice Date: 2026-09-13
+Due Date: 2026-10-13
+PO Number: PO-2013
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer keyboards
+Quantity: 1
+Unit Price: Rs. 7347.74
+Line Total: Rs. 7347.74
+
+Invoice Total: Rs. 7347.74
+
+Payment Terms: Net 30 Days

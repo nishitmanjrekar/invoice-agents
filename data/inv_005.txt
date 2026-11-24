@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1005
+Vendor: Bright Electronics
+Invoice Date: 2026-10-19
+Due Date: 2026-11-18
+PO Number: PO-2005
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Computer keyboards
+Quantity: 1
+Unit Price: Rs. 7288.93
+Line Total: Rs. 7288.93
+
+Invoice Total: Rs. 7288.93
+
+Payment Terms: Net 30 Days

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1108
+Vendor: National Stationers
+Invoice Date: 2026-10-06
+Due Date: 2026-11-05
+PO Number: PO-2108
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Office desks
+Quantity: 1
+Unit Price: Rs. 14330.20
+Line Total: Rs. 14330.20
+
+Invoice Total: Rs. 14330.20
+
+Payment Terms: Net 30 Days

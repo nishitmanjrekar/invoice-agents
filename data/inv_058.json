@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_058",
+    "category": "clean",
+    "vendor": "National Stationers",
+    "invoice_number": "INV-1058",
+    "invoice_date": "2026-09-12",
+    "due_date": "2026-10-12",
+    "currency": "INR",
+    "total": 8039.91,
+    "po_number": "PO-2058",
+    "po_amount": 8039.91,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

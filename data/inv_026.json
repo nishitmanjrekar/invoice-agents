@@ -1,0 +1,16 @@
+{
+    "invoice_id": "inv_026",
+    "category": "clean",
+    "vendor": "Vertex Technologies",
+    "invoice_number": "INV-1026",
+    "invoice_date": "2026-10-07",
+    "due_date": "2026-11-06",
+    "currency": "INR",
+    "total": 6342.67,
+    "po_number": "PO-2026",
+    "po_amount": 6342.67,
+    "expected_route": "auto_approve",
+    "expected_issues": [],
+    "duplicate_of": null,
+    "security_flag": false
+}

@@ -1,0 +1,21 @@
+INVOICE
+
+Invoice Number: INV-1066
+Vendor: National Stationers
+Invoice Date: 2026-09-30
+Due Date: 2026-10-30
+PO Number: PO-2066
+Currency: INR
+
+BILL TO:
+Invoice Processing Department
+
+ITEM DETAILS:
+Description: Laptop accessories
+Quantity: 1
+Unit Price: Rs. 9696.23
+Line Total: Rs. 9696.23
+
+Invoice Total: Rs. 9696.23
+
+Payment Terms: Net 30 Days

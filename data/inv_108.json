@@ -1,0 +1,18 @@
+{
+    "invoice_id": "inv_108",
+    "category": "amount_mismatch",
+    "vendor": "National Stationers",
+    "invoice_number": "INV-1108",
+    "invoice_date": "2026-10-06",
+    "due_date": "2026-11-05",
+    "currency": "INR",
+    "total": 14330.2,
+    "po_number": "PO-2108",
+    "po_amount": 13560.91,
+    "expected_route": "human_review",
+    "expected_issues": [
+        "amount_mismatch"
+    ],
+    "duplicate_of": null,
+    "security_flag": false
+}
