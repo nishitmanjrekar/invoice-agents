@@ -29,17 +29,19 @@ def list_submissions():
 def list_invoices(limit: int, offset: int, user_id=None):
     """Return a page of invoices visible to a user and the matching count."""
 
-    ownership_filter = """
-        (
-            :user_id IS NULL
-            OR EXISTS (
+    if user_id is None:
+        ownership_filter = "TRUE"
+        ownership_parameters = {}
+    else:
+        ownership_filter = """
+            EXISTS (
                 SELECT 1
                 FROM submissions AS s
                 WHERE s.thread_id = i.thread_id
                   AND s.submitted_by = :user_id
             )
-        )
-    """
+        """
+        ownership_parameters = {"user_id": user_id}
 
     page_statement = text(
         f"""
@@ -72,7 +74,7 @@ def list_invoices(limit: int, offset: int, user_id=None):
     parameters = {
         "limit": limit,
         "offset": offset,
-        "user_id": user_id,
+        **ownership_parameters,
     }
 
     with get_postgres_engine().connect() as connection:
@@ -83,7 +85,7 @@ def list_invoices(limit: int, offset: int, user_id=None):
 
         total = connection.execute(
             count_statement,
-            {"user_id": user_id},
+            ownership_parameters,
         ).scalar_one()
 
     return [dict(row) for row in rows], total
@@ -92,21 +94,30 @@ def list_invoices(limit: int, offset: int, user_id=None):
 def get_invoice(invoice_id: int, user_id=None):
     """Return an accessible invoice and its audit history, or (None, [])."""
 
-    invoice_statement = text(
+    if user_id is None:
+        ownership_filter = "TRUE"
+        parameters = {"invoice_id": invoice_id}
+    else:
+        ownership_filter = """
+            EXISTS (
+                SELECT 1
+                FROM submissions AS s
+                WHERE s.thread_id = i.thread_id
+                  AND s.submitted_by = :user_id
+            )
         """
+        parameters = {
+            "invoice_id": invoice_id,
+            "user_id": user_id,
+        }
+
+    invoice_statement = text(
+        f"""
         SELECT i.*, v.vendor_name
         FROM invoices AS i
         LEFT JOIN vendors AS v ON i.vendor_id = v.id
         WHERE i.id = :invoice_id
-          AND (
-              :user_id IS NULL
-              OR EXISTS (
-                  SELECT 1
-                  FROM submissions AS s
-                  WHERE s.thread_id = i.thread_id
-                    AND s.submitted_by = :user_id
-              )
-          )
+          AND {ownership_filter}
         """
     )
 
@@ -122,10 +133,7 @@ def get_invoice(invoice_id: int, user_id=None):
     with get_postgres_engine().connect() as connection:
         row = connection.execute(
             invoice_statement,
-            {
-                "invoice_id": invoice_id,
-                "user_id": user_id,
-            },
+            parameters,
         ).mappings().first()
 
         if row is None:
@@ -141,9 +149,8 @@ def get_invoice(invoice_id: int, user_id=None):
 
     return dict(row), [dict(log) for log in logs]
 
-
 def get_invoice_status(invoice_id: int):
-    """Return the ID and status for an invoice, if it exists."""
+    """Return the invoice ID and status, if it exists."""
 
     statement = text(
         """
@@ -160,7 +167,6 @@ def get_invoice_status(invoice_id: int):
         ).mappings().first()
 
     return dict(row) if row is not None else None
-
 
 def list_review_cases(status: str):
     """Return review cases, optionally including every status."""
