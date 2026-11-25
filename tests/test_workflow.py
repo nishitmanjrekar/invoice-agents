@@ -64,12 +64,21 @@ def test_clean_invoice_pauses_then_approves(seeded_db, tmp_path, make_invoice):
         invoice_id = paused.values["invoice_id"]
         assert _status(invoice_id) == "pending_approval"
 
-        graph.invoke(Command(resume={"action": "approve", "reason": "verified"}), config)
+        graph.invoke(Command(update={"review_actor" : "nishit"}, resume={"action" : "approve", "reason" : "verified"},), config,)
 
         final = graph.get_state(config)
         assert final.next == ()
         assert final.values["status"] == "approved"
         assert _status(invoice_id) == "approved"
+
+    with db.db_connection() as conn:
+        audit = conn.execute(
+            "SELECT actor FROM audit_logs WHERE invoice_id = ? "
+            "AND action = 'INVOICE_APPROVED' ORDER BY id DESC LIMIT 1",
+            (invoice_id,),
+    ).fetchone()
+
+    assert audit["actor"] == "nishit"
 
     assert len(extractor.calls) == 1  # resuming never re-runs extraction
 

@@ -42,6 +42,7 @@ class InvoiceState(TypedDict, total=False):
 
     reviewer_decision: str
     reviewer_reason: str
+    review_actor: str
 
 
 def extract_invoice_node(
@@ -407,6 +408,7 @@ def human_approval_node(state: InvoiceState) -> dict:
         invoice_id=state["invoice_id"],
         decision=action,
         reason=reason,
+        actor=state.get("review_actor") or "human_reviewer",
     )
 
     if not success:

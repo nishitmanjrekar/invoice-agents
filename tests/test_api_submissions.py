@@ -213,3 +213,50 @@ def test_startup_recovery_is_skipped_without_the_ledger(env):
     conn.commit()
     conn.close()
     assert api._recover_on_startup() is None
+
+def test_authenticated_reviewer_is_recorded_as_workflow_actor(env, monkeypatch):
+    from src import auth
+
+    monkeypatch.setenv("INVOICE_AUTH", "enforce")
+    monkeypatch.setenv("INVOICE_AUTH_SECRET", "test-secret-" + "x" * 32)
+
+    auth.create_user("uploader1", "test-password", "uploader")
+    auth.create_user("reviewer1", "test-password", "reviewer")
+
+    def login_headers(username):
+        response = env.client.post(
+            "/auth/login",
+            json={"username": username, "password": "test-password"},
+        )
+        assert response.status_code == 200
+        return {"Authorization": f"Bearer {response.json()['access_token']}"}
+
+    upload_response = env.client.post(
+        "/invoices/process",
+        files={"file": ("a.txt", b"invoice one", "text/plain")},
+        headers=login_headers("uploader1"),
+    )
+    assert upload_response.status_code == 202, upload_response.text
+
+    thread_id = upload_response.json()["thread_id"]
+
+    decision = env.client.post(
+        f"/workflows/{thread_id}/decision",
+        json={"action": "approve", "reason": "verified"},
+        headers=login_headers("reviewer1"),
+    )
+    assert decision.status_code == 200
+
+    conn = db_core.connect()
+    try:
+        audit = conn.execute(
+            """
+            SELECT actor FROM audit_logs
+            WHERE action = 'INVOICE_APPROVED'
+            ORDER BY id DESC LIMIT 1
+            """
+        ).fetchone()
+    finally:
+        conn.close()
+
+    assert audit["actor"] == "reviewer1"

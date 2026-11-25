@@ -279,7 +279,7 @@ def require_roles(*roles):
         raise ValueError(f"Unknown roles: {sorted(unknown)}")
 
     def dependency(user=Depends(current_user)):
-        if user["role"] not in roles:
+        if roles and user["role"] not in roles:
             raise HTTPException(
                 status_code=403, detail="Your role is not permitted to perform this action."
             )
@@ -307,7 +307,7 @@ def require_access(*roles):
                 return None
 
         user = _resolve(credentials)
-        if user["role"] not in roles:
+        if roles and user["role"] not in roles:
             raise HTTPException(
                 status_code=403, detail="Your role is not permitted to perform this action."
             )

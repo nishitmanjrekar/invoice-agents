@@ -10,11 +10,11 @@ from src.db_core import get_postgres_engine
 
 
 def list_submissions():
-    """Return the submission ledger rows needed by the workflow listing."""
+    """Return submission rows needed by workflow listing and ownership checks."""
 
     statement = text(
         """
-        SELECT id, thread_id, status
+        SELECT id, thread_id, status, submitted_by
         FROM submissions
         WHERE thread_id IS NOT NULL
         """
@@ -26,11 +26,23 @@ def list_submissions():
     return [dict(row) for row in rows]
 
 
-def list_invoices(limit: int, offset: int):
-    """Return a page of invoices and the total invoice count."""
+def list_invoices(limit: int, offset: int, user_id=None):
+    """Return a page of invoices visible to a user and the matching count."""
+
+    ownership_filter = """
+        (
+            :user_id IS NULL
+            OR EXISTS (
+                SELECT 1
+                FROM submissions AS s
+                WHERE s.thread_id = i.thread_id
+                  AND s.submitted_by = :user_id
+            )
+        )
+    """
 
     page_statement = text(
-        """
+        f"""
         SELECT
             i.id,
             i.invoice_number,
@@ -43,24 +55,42 @@ def list_invoices(limit: int, offset: int):
             i.created_at
         FROM invoices AS i
         LEFT JOIN vendors AS v ON i.vendor_id = v.id
+        WHERE {ownership_filter}
         ORDER BY i.id DESC
         LIMIT :limit OFFSET :offset
         """
     )
-    count_statement = text("SELECT COUNT(*) AS total FROM invoices")
+
+    count_statement = text(
+        f"""
+        SELECT COUNT(*) AS total
+        FROM invoices AS i
+        WHERE {ownership_filter}
+        """
+    )
+
+    parameters = {
+        "limit": limit,
+        "offset": offset,
+        "user_id": user_id,
+    }
 
     with get_postgres_engine().connect() as connection:
         rows = connection.execute(
             page_statement,
-            {"limit": limit, "offset": offset},
+            parameters,
         ).mappings().all()
-        total = connection.execute(count_statement).scalar_one()
+
+        total = connection.execute(
+            count_statement,
+            {"user_id": user_id},
+        ).scalar_one()
 
     return [dict(row) for row in rows], total
 
 
-def get_invoice(invoice_id: int):
-    """Return one invoice and its audit history, or (None, [])."""
+def get_invoice(invoice_id: int, user_id=None):
+    """Return an accessible invoice and its audit history, or (None, [])."""
 
     invoice_statement = text(
         """
@@ -68,8 +98,18 @@ def get_invoice(invoice_id: int):
         FROM invoices AS i
         LEFT JOIN vendors AS v ON i.vendor_id = v.id
         WHERE i.id = :invoice_id
+          AND (
+              :user_id IS NULL
+              OR EXISTS (
+                  SELECT 1
+                  FROM submissions AS s
+                  WHERE s.thread_id = i.thread_id
+                    AND s.submitted_by = :user_id
+              )
+          )
         """
     )
+
     audit_statement = text(
         """
         SELECT action, actor, details, created_at
@@ -82,11 +122,17 @@ def get_invoice(invoice_id: int):
     with get_postgres_engine().connect() as connection:
         row = connection.execute(
             invoice_statement,
-            {"invoice_id": invoice_id},
+            {
+                "invoice_id": invoice_id,
+                "user_id": user_id,
+            },
         ).mappings().first()
 
         if row is None:
             return None, []
+
+        if user_id is not None:
+            return dict(row), []
 
         logs = connection.execute(
             audit_statement,

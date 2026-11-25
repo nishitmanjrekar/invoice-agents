@@ -137,3 +137,30 @@ def test_database_error_returns_false(monkeypatch):
     )
 
     assert review.make_decision(10, "approve") is False
+
+def test_custom_actor_is_recorded_in_audit(monkeypatch):
+    connection = Mock()
+    connection.execute.side_effect = [
+        _result(
+            {
+                "id": 12,
+                "invoice_number": "INV-004",
+                "status": "pending_approval",
+            }
+        ),
+        _result(rowcount=1),
+        _result(),
+    ]
+
+    monkeypatch.setattr(
+        review,
+        "get_postgres_engine",
+        lambda: _mock_engine(connection),
+    )
+
+    assert review.make_decision(
+        12, "approve", "verified", actor="nishit"
+    ) is True
+
+    audit_params = connection.execute.call_args_list[2].args[1]
+    assert audit_params["actor"] == "nishit"

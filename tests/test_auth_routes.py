@@ -115,8 +115,18 @@ def test_neither_the_password_nor_the_token_is_logged(client, caplog):
     assert SECRET not in caplog.text
 
 
-def test_phase_2a_enforces_nothing_on_existing_routes(client, monkeypatch):
+def test_phase_2b_requires_authentication_on_existing_routes(client, monkeypatch):
     monkeypatch.setenv("INVOICE_AUTH", "enforce")
-    assert client.get("/health").status_code == 200
-    assert client.get("/invoices").status_code == 200
-    assert client.get("/review-cases").status_code == 200
+
+    # Unauthenticated requests are rejected.
+    assert client.get("/health").status_code == 401
+    assert client.get("/invoices").status_code == 401
+    assert client.get("/review-cases").status_code == 401
+
+    # An authenticated reviewer can access these staff routes.
+    token = login(client).json()["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
+    assert client.get("/health", headers=headers).status_code == 200
+    assert client.get("/invoices", headers=headers).status_code == 200
+    assert client.get("/review-cases", headers=headers).status_code == 200

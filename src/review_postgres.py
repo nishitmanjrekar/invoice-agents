@@ -131,7 +131,7 @@ def show_invoice(invoice_id):
             print("-" * 35)
 
 
-def make_decision(invoice_id, decision, reason=None):
+def make_decision(invoice_id, decision, reason=None, actor="human_reviewer"):
     """
     Record a human decision.
 
@@ -247,7 +247,7 @@ def make_decision(invoice_id, decision, reason=None):
                 {
                     "invoice_id": invoice_id,
                     "action": action_name,
-                    "actor": "human_reviewer",
+                    "actor": actor,
                     "details": json.dumps(details),
                     "created_at": timestamp,
                 },
@@ -392,7 +392,7 @@ def show_review_case(case_id):
         )
 
 
-def reject_review_case(case_id, reason):
+def reject_review_case(case_id, reason, actor="human_reviewer"):
     reason = str(reason or "").strip()
 
     if not reason:
@@ -481,7 +481,7 @@ def reject_review_case(case_id, reason):
                 {
                     "invoice_id": case["existing_invoice_id"],
                     "action": "INVOICE_REVIEW_CASE_REJECTED",
-                    "actor": "human_reviewer",
+                    "actor": actor,
                     "details": json.dumps(details),
                     "created_at": timestamp,
                 },

@@ -28,7 +28,8 @@ def postgres_query_engine(monkeypatch):
         CREATE TABLE submissions (
             id INTEGER PRIMARY KEY,
             thread_id TEXT,
-            status TEXT
+            status TEXT,
+            submitted_by INTEGER
         )
         """,
         """
@@ -42,6 +43,7 @@ def postgres_query_engine(monkeypatch):
             id INTEGER PRIMARY KEY,
             invoice_number TEXT,
             vendor_id INTEGER,
+            thread_id TEXT,
             invoice_date TEXT,
             currency TEXT,
             total REAL,
@@ -159,6 +161,7 @@ def test_postgres_list_submissions(postgres_query_engine):
             "id": 1,
             "thread_id": "thread-1",
             "status": "awaiting_approval",
+            "submitted_by": None,
         }
     ]
 
@@ -212,7 +215,7 @@ def test_postgres_invoice_endpoints(postgres_client, monkeypatch):
     assert detail.json()["invoice"]["extracted_data"] == {"total": 1250.5}
     assert detail.json()["audit_history"][0]["action"] == "invoice_created"
 
-    monkeypatch.setattr(api, "make_decision", lambda *args: True)
+    monkeypatch.setattr(api, "make_decision", lambda *args, **kwargs: True)
     rejected = postgres_client.post(
         "/invoices/10/reject",
         json={"action": "reject", "reason": "Reviewed and rejected"},
@@ -227,7 +230,7 @@ def test_postgres_review_case_endpoints(postgres_client, monkeypatch):
     assert response.json()["count"] == 1
     assert response.json()["review_cases"][0]["id"] == 20
 
-    monkeypatch.setattr(api, "reject_review_case", lambda *args: True)
+    monkeypatch.setattr(api, "reject_review_case", lambda *args, **kwargs: True)
     rejected = postgres_client.post(
         "/review-cases/20/reject",
         json={"action": "reject", "reason": "Investigation completed"},

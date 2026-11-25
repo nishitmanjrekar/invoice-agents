@@ -146,7 +146,7 @@ def show_invoice(invoice_id):
             print("-" * 35)
 
 
-def make_decision(invoice_id, decision, reason=None):
+def make_decision(invoice_id, decision, reason=None, actor="human_reviewer"):
     """
     Record a human decision.
 
@@ -155,7 +155,7 @@ def make_decision(invoice_id, decision, reason=None):
     """
     if _postgres():
         return _get_postgres_review().make_decision(
-            invoice_id, decision, reason
+            invoice_id, decision, reason, actor
         )
 
     decision = str(decision).strip().lower()
@@ -259,7 +259,7 @@ def make_decision(invoice_id, decision, reason=None):
             (
                 invoice_id,
                 action_name,
-                "human_reviewer",
+                actor,
                 json.dumps(details),
                 timestamp,
             ),
@@ -418,10 +418,10 @@ def show_review_case(case_id):
         )
 
 
-def reject_review_case(case_id, reason):
+def reject_review_case(case_id, reason, actor="human_reviewer"):
 
     if _postgres():
-        return _get_postgres_review().reject_review_case(case_id, reason)
+        return _get_postgres_review().reject_review_case(case_id, reason, actor)
 
     reason = str(reason or "").strip()
 
@@ -499,7 +499,7 @@ def reject_review_case(case_id, reason):
             (
                 case["existing_invoice_id"],
                 "INVOICE_REVIEW_CASE_REJECTED",
-                "human_reviewer",
+                actor,
                 json.dumps(details),
                 timestamp,
             ),

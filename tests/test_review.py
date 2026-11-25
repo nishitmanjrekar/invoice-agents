@@ -27,6 +27,7 @@ def test_approve_pending_invoice_updates_status_and_audit(seeded_db, make_invoic
     details = json.loads(last["details"])
     assert details["previous_status"] == "pending_approval"
     assert details["new_status"] == "approved"
+    assert last["actor"] == "human_reviewer"
 
 
 def test_reject_requires_a_reason(seeded_db, make_invoice):
@@ -68,3 +69,13 @@ def test_review_case_rejection_flow(seeded_db, make_invoice):
         ).fetchone()
     assert row["status"] == "rejected"
     assert row["reviewer_reason"] == "not our vendor"
+
+def test_custom_actor_is_recorded_in_audit(seeded_db, make_invoice):
+    invoice_id = db.save_invoice(make_invoice(), status="pending_approval")
+
+    assert review.make_decision(
+        invoice_id, "approve", "verified", actor="nishit"
+    ) is True
+
+    last = _audit(invoice_id)[-1]
+    assert last["actor"] == "nishit"
