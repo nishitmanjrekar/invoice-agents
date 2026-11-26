@@ -433,7 +433,7 @@ async def process_invoice(
 
     authenticated_user = _authenticated_user(user)
     submitted_by = (
-        authenticated_user["id"]
+        str(authenticated_user["id"])
         if auth.auth_enforced() and authenticated_user
         else None
     )
@@ -503,7 +503,7 @@ async def process_invoice(
 
         if (
             _is_enforced_uploader(user)
-            and row.get("submitted_by") != user["id"]
+            and row.get("submitted_by") != str(user["id"])
         ):
             raise HTTPException(
                 status_code=409,
@@ -555,7 +555,7 @@ def get_workflow_status(
         _is_enforced_uploader(user)
         and (
             submission is None
-            or submission.get("submitted_by") != user["id"]
+            or submission.get("submitted_by") != str(user["id"])
         )
     ):
         raise HTTPException(
@@ -692,7 +692,7 @@ def list_workflows(
                 rows = [
                     row
                     for row in rows
-                    if row.get("submitted_by") == user["id"]
+                    if row.get("submitted_by") == str(user["id"])
                 ]
 
             ledger = {
@@ -780,7 +780,7 @@ def decide_workflow(
         auth.auth_enforced()
         and request.action == "approve"
         and submission is not None
-        and submission.get("submitted_by") == user["id"]
+        and submission.get("submitted_by") == str(user["id"])
     ):
         raise HTTPException(
             status_code=403,
@@ -853,7 +853,7 @@ def list_invoices(
     offset: int = Query(default=0, ge=0),
     user=Depends(auth.require_access()),
 ):
-    user_id = user["id"] if _is_enforced_uploader(user) else None
+    user_id = str(user["id"]) if _is_enforced_uploader(user) else None
 
     if get_database_backend() == "postgresql":
         rows, total = _postgres_api_queries().list_invoices(
@@ -929,7 +929,7 @@ def get_invoice(
     invoice_id: int,
     user=Depends(auth.require_access()),
 ):
-    user_id = user["id"] if _is_enforced_uploader(user) else None
+    user_id = str(user["id"]) if _is_enforced_uploader(user) else None
 
     if get_database_backend() == "postgresql":
         row, logs = _postgres_api_queries().get_invoice(

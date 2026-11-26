@@ -29,7 +29,7 @@ def postgres_query_engine(monkeypatch):
             id INTEGER PRIMARY KEY,
             thread_id TEXT,
             status TEXT,
-            submitted_by INTEGER
+            submitted_by TEXT
         )
         """,
         """
