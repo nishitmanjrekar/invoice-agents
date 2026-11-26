@@ -3,6 +3,9 @@ import json
 import pandas as pd
 import streamlit as st
 
+from components.status import risk_tone, style_tone_columns
+from components.ui import kpi_card
+
 CHECK_LABELS = {
     "vendor": "Vendor",
     "purchase_order": "Purchase order",
@@ -90,6 +93,10 @@ def summarize_checks(report):
     ]
 
 
+def _result_tone(value):
+    return {"Pass": "success", "Flagged": "danger"}.get(value, "neutral")
+
+
 def render_validation_report(report, show_raw=True):
     """Shared validation view for the Approval Center and Review Cases."""
     data = parse_report(report)
@@ -101,20 +108,39 @@ def render_validation_report(report, show_raw=True):
     c1, c2, c3 = st.columns(3)
 
     risk = data.get("risk_level")
-    c1.metric("Risk level", str(risk).title() if risk else "-")
+    with c1:
+        kpi_card(
+            "Risk level",
+            str(risk).title() if risk else "-",
+            tone=risk_tone(risk),
+            small=True,
+        )
 
     needs_review = data.get("requires_human_review")
-    c2.metric(
-        "Human review required",
-        "-" if needs_review is None else ("Yes" if needs_review else "No"),
-    )
+    with c2:
+        kpi_card(
+            "Human review required",
+            "-" if needs_review is None else ("Yes" if needs_review else "No"),
+            tone="warning" if needs_review else "neutral",
+            small=True,
+        )
 
     route = data.get("route")
-    c3.metric("Suggested route", str(route).replace("_", " ").title() if route else "-")
+    with c3:
+        kpi_card(
+            "Suggested route",
+            str(route).replace("_", " ").title() if route else "-",
+            small=True,
+        )
 
     rows = summarize_checks(data)
     if rows:
-        st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+        table = pd.DataFrame(rows)
+        st.dataframe(
+            style_tone_columns(table, {"Result": _result_tone}),
+            hide_index=True,
+            width="stretch",
+        )
     else:
         st.caption("This report has no itemised checks.")
 

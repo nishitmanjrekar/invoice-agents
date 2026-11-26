@@ -1,9 +1,19 @@
-import api_client
 import pandas as pd
 import streamlit as st
+
+import api_client
 from api_client import ApiError
-from components.status import get_status_label
-from components.validation_view import render_validation_report
+from components.status import get_status_label, label_tone, risk_tone, style_tone_columns
+from components.ui import (
+    empty_state,
+    esc,
+    kpi_card,
+    page_header,
+    pill,
+    section_title,
+    status_pill,
+)
+from components.validation_view import parse_report, render_validation_report
 
 state = st.session_state
 state.setdefault("appr_results", {})        # thread_id -> (kind, text)
@@ -80,13 +90,12 @@ def dismiss(thread_id):
 
 
 # ------------------------------------------------------------------- page
-st.title("Human Approval Center")
-st.caption(
+reload_col = page_header(
+    "Human Approval Center",
     "Approve or reject invoices that are waiting for a human decision. "
-    "Decisions resume the saved workflow. No payment is made."
+    "Decisions resume the saved workflow. No payment is made.",
 )
-
-st.button("Reload data", on_click=reload_data, icon=":material/refresh:")
+reload_col.button("Reload data", on_click=reload_data, icon=":material/refresh:", width="stretch")
 
 for thread_id, (kind, text) in list(state.appr_results.items()):
     box = st.container()
@@ -119,18 +128,20 @@ actionable_ids = {i["id"] for i in actionable}
 stuck = [i for i in pending if i["id"] not in actionable_ids]
 
 m1, m2, m3 = st.columns(3)
-with m1.container(border=True):
-    st.metric("Awaiting decision", len(actionable))
-with m2.container(border=True):
-    st.metric("Pending, not actionable", len(stuck))
-with m3.container(border=True):
-    st.metric("Human review (read-only)", len(human_review))
+with m1:
+    kpi_card("Awaiting decision", len(actionable), "Ready to approve or reject", tone="warning")
+with m2:
+    kpi_card("Pending, not actionable", len(stuck), "No paused workflow found", tone="neutral")
+with m3:
+    kpi_card("Human review (read-only)", len(human_review), "Cannot be decided here", tone="review")
+
+st.write("")
 
 # ------------------------------------------------------- awaiting decision
-st.subheader("Awaiting decision")
+section_title("Awaiting decision")
 
 if not actionable:
-    st.info("No invoices are waiting for a human decision.")
+    empty_state("No invoices are waiting for a human decision.", "New approvals appear here as soon as a workflow pauses.")
 
 for inv in sorted(actionable, key=lambda i: i["id"]):
     wf = workflow_by_invoice[inv["id"]]
@@ -139,16 +150,26 @@ for inv in sorted(actionable, key=lambda i: i["id"]):
     confirming = state.appr_confirm and state.appr_confirm[0] == thread_id
     amount = f"{inv.get('currency', '')} {float(inv.get('total', 0)):,.2f}".strip()
 
-    with st.container(border=True):
-        c1, c2, c3, c4 = st.columns([3, 2, 2, 3])
-        c1.caption("Vendor")
-        c1.write(f"**{inv.get('vendor_name')}**")
-        c2.caption("Invoice number")
-        c2.write(inv.get("invoice_number"))
-        c3.caption("Total amount")
-        c3.write(amount)
-        c4.caption("Purchase order")
-        c4.write(inv.get("po_number") or "None")
+    # One workflow read per card (the same call the validation expander made before).
+    detail, detail_error = None, None
+    try:
+        detail = api_client.get_workflow(thread_id)
+    except ApiError as exc:
+        detail_error = exc
+
+    risk = parse_report((detail or {}).get("validation_report")).get("risk_level")
+    risk_html = pill(f"{str(risk).title()} risk", risk_tone(risk)) if risk else ""
+
+    with st.container(key=f"card_approval_{thread_id}"):
+        st.markdown(
+            '<div class="ia-item-head"><div>'
+            f'<div class="ia-item-title">{esc(inv.get("vendor_name"))}</div>'
+            f'<div class="ia-item-meta">Invoice {esc(inv.get("invoice_number"))} &middot; '
+            f'PO {esc(inv.get("po_number") or "None")}</div></div>'
+            f'<div style="text-align:right"><div class="ia-item-amount">{esc(amount)}</div>'
+            f'<div>{status_pill(inv.get("status"))} {risk_html}</div></div></div>',
+            unsafe_allow_html=True,
+        )
 
         st.caption(
             f"Workflow: {get_status_label(wf.get('status'))} · "
@@ -156,10 +177,8 @@ for inv in sorted(actionable, key=lambda i: i["id"]):
         )
 
         with st.expander("Validation information"):
-            try:
-                detail = api_client.get_workflow(thread_id)
-            except ApiError as exc:
-                st.error(f"Could not load validation report: {exc}")
+            if detail_error is not None:
+                st.error(f"Could not load validation report: {detail_error}")
             else:
                 if detail.get("route_reason"):
                     st.write(f"**Routing:** {detail['route_reason']}")
@@ -184,7 +203,7 @@ for inv in sorted(actionable, key=lambda i: i["id"]):
                 f"Confirm **{action}** for {label} ({amount})? "
                 "This resumes the workflow and updates the database."
             )
-            b1, b2, _ = st.columns([1, 1, 4])
+            b1, b2, _ = st.columns([1.3, 1, 4])
             b1.button(
                 f"Confirm {action}",
                 key=f"confirm_{thread_id}",
@@ -215,6 +234,8 @@ for inv in sorted(actionable, key=lambda i: i["id"]):
             if locked:
                 st.caption("A decision request was sent. Click Reload data to refresh.")
 
+    st.write("")
+
 # ----------------------------------------------------------- not actionable
 def invoice_table(rows):
     df = pd.DataFrame(rows)[[
@@ -222,26 +243,30 @@ def invoice_table(rows):
         "total", "po_number", "status",
     ]]
     df["status"] = df["status"].apply(get_status_label)
-    return df.rename(columns={
+    df = df.rename(columns={
         "id": "Invoice ID", "invoice_number": "Invoice number",
         "vendor_name": "Vendor", "currency": "Cur.", "total": "Amount",
         "po_number": "PO number", "status": "Status",
     })
+    return style_tone_columns(df, {"Status": label_tone})
 
 
 if stuck:
-    st.subheader("Pending, but not actionable here")
-    st.caption(
-        "These invoices have status Pending Approval, but no paused workflow "
-        "was found for them (no checkpoint, or the workflow already finished). "
-        "Thread IDs are never guessed, so no buttons are shown."
-    )
-    st.dataframe(invoice_table(stuck), hide_index=True, width="stretch")
+    with st.container(key="card_stuck"):
+        section_title(
+            "Pending, but not actionable here",
+            "These invoices have status Pending Approval, but no paused workflow "
+            "was found for them (no checkpoint, or the workflow already finished). "
+            "Thread IDs are never guessed, so no buttons are shown.",
+        )
+        st.dataframe(invoice_table(stuck), hide_index=True, width="stretch")
+    st.write("")
 
 if human_review:
-    st.subheader("Human review (read-only)")
-    st.caption(
-        "The workflow does not pause for these invoices, and the backend has "
-        "no approve action for them, so they cannot be approved or rejected here."
-    )
-    st.dataframe(invoice_table(human_review), hide_index=True, width="stretch")
+    with st.container(key="card_human_review"):
+        section_title(
+            "Human review (read-only)",
+            "The workflow does not pause for these invoices, and the backend has "
+            "no approve action for them, so they cannot be approved or rejected here.",
+        )
+        st.dataframe(invoice_table(human_review), hide_index=True, width="stretch")

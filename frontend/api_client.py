@@ -1,3 +1,4 @@
+import streamlit as st
 from urllib.parse import quote
 
 import requests
@@ -16,13 +17,32 @@ class ApiError(Exception):
         return self.message
 
 
-def _request(method, endpoint, *, params=None, json=None, files=None,
-             timeout=REQUEST_TIMEOUT):
+
+def _request(
+    method,
+    endpoint,
+    *,
+    params=None,
+    json=None,
+    files=None,
+    timeout=REQUEST_TIMEOUT,
+    authenticated=True,
+):
     url = f"{API_BASE_URL}{endpoint}"
+    headers = {}
+
+    token = st.session_state.get("access_token")
+    if authenticated and token:
+        headers["Authorization"] = f"Bearer {token}"
 
     try:
         response = requests.request(
-            method, url, params=params, json=json, files=files,
+            method,
+            url,
+            params=params,
+            json=json,
+            files=files,
+            headers=headers,
             timeout=timeout,
         )
     except requests.exceptions.ConnectionError:
@@ -41,8 +61,12 @@ def _request(method, endpoint, *, params=None, json=None, files=None,
             detail = response.json().get("detail")
         except Exception:
             pass
+
         if isinstance(detail, list):
-            detail = "; ".join(str(item.get("msg", item)) for item in detail)
+            detail = "; ".join(
+                str(item.get("msg", item)) for item in detail
+            )
+
         raise ApiError(
             detail or f"API returned HTTP {response.status_code}.",
             status_code=response.status_code,
@@ -54,9 +78,24 @@ def _request(method, endpoint, *, params=None, json=None, files=None,
         raise ApiError("The API returned invalid JSON.")
 
 
+
 def api_get(endpoint, params=None):
     return _request("GET", endpoint, params=params)
 
+
+def login(username, password):
+    """Authenticate a user and return the token response."""
+    return _request(
+        "POST",
+        "/auth/login",
+        json={"username": username, "password": password},
+        authenticated=False,
+    )
+
+
+def get_current_user():
+    """Return the authenticated user's current database identity."""
+    return api_get("/auth/me")
 
 # ------------------------------------------------------------------ reads
 def get_health():

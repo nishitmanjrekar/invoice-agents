@@ -2,11 +2,20 @@ import hashlib
 import re
 import time
 
-import api_client
 import streamlit as st
+
+import api_client
 from api_client import ApiError
 from components.invoice_view import render_invoice_detail
 from components.status import get_status_label
+from components.ui import (
+    field_grid,
+    kpi_card,
+    page_header,
+    section_title,
+    stepper,
+)
+from components.validation_view import render_validation_report
 
 MAX_UPLOAD_BYTES = 2 * 1024 * 1024
 POLL_SECONDS = 2
@@ -24,8 +33,10 @@ st.session_state.setdefault("uploader_nonce", 0)
 
 state = st.session_state
 
-st.title("Invoice Processing")
-st.caption("Upload a .txt invoice. It is submitted once and tracked by its workflow ID.")
+page_header(
+    "Invoice Processing",
+    "Upload a .txt invoice. It is submitted once and tracked by its workflow ID.",
+)
 
 
 def start_new():
@@ -150,54 +161,77 @@ def do_submit(resubmit_of=None):
 # ---------------------------------------------------------------- submit
 tracking_active = state.proc_thread_id is not None and not state.proc_finished
 
-uploaded = st.file_uploader(
-    "Invoice file (.txt, max 2 MB)",
-    type=["txt"],
-    disabled=tracking_active,
-    key=f"invoice_file_{state.uploader_nonce}",
-)
+left_col, right_col = st.columns([3, 2])
 
-content = uploaded.getvalue() if uploaded else None
-digest = hashlib.sha256(content).hexdigest() if content is not None else None
-already_submitted = digest is not None and digest == state.proc_digest
+with left_col.container(key="card_upload"):
+    section_title("Upload invoice", "One file per submission.")
 
-if already_submitted and not tracking_active:
-    st.info(
-        "This file was already submitted in this session. "
-        "Choose another file, or click Start new submission to submit it again."
+    uploaded = st.file_uploader(
+        "Invoice file (.txt, max 2 MB)",
+        type=["txt"],
+        disabled=tracking_active,
+        key=f"invoice_file_{state.uploader_nonce}",
     )
 
-left, right = st.columns([1, 1])
+    content = uploaded.getvalue() if uploaded else None
+    digest = hashlib.sha256(content).hexdigest() if content is not None else None
+    already_submitted = digest is not None and digest == state.proc_digest
 
-left.button(
-    "Upload and process",
-    type="primary",
-    icon=":material/upload:",
-    on_click=do_submit,
-    disabled=(uploaded is None or tracking_active or already_submitted),
-)
-right.button(
-    "Start new submission",
-    on_click=start_new,
-    disabled=tracking_active,
-)
+    if already_submitted and not tracking_active:
+        st.info(
+            "This file was already submitted in this session. "
+            "Choose another file, or click Start new submission to submit it again."
+        )
 
-if state.proc_error:
-    kind, text = state.proc_error
-    getattr(st, kind)(text)
+    left, right = st.columns([1.4, 1])
 
-if state.proc_resubmit and uploaded is not None and not tracking_active:
-    st.button(
-        f"Resubmit explicitly (earlier submission {state.proc_resubmit})",
+    left.button(
+        "Upload and process",
+        type="primary",
+        icon=":material/upload:",
         on_click=do_submit,
-        args=(state.proc_resubmit,),
-        icon=":material/replay:",
+        disabled=(uploaded is None or tracking_active or already_submitted),
+        width="stretch",
     )
-    st.caption(
-        "A resubmission creates a new linked record. The failed one stays as it is "
-        "in the audit history."
+    right.button(
+        "Start new submission",
+        on_click=start_new,
+        disabled=tracking_active,
+        width="stretch",
     )
 
+    if state.proc_error:
+        kind, text = state.proc_error
+        getattr(st, kind)(text)
+
+    if state.proc_resubmit and uploaded is not None and not tracking_active:
+        st.button(
+            f"Resubmit explicitly (earlier submission {state.proc_resubmit})",
+            on_click=do_submit,
+            args=(state.proc_resubmit,),
+            icon=":material/replay:",
+        )
+        st.caption(
+            "A resubmission creates a new linked record. The failed one stays as it is "
+            "in the audit history."
+        )
+
+with right_col.container(key="card_upload_info"):
+    section_title("Supported files")
+    st.markdown(
+        '<dl class="ia-kv"><dt>Format</dt><dd>Plain text (.txt)</dd>'
+        "<dt>Encoding</dt><dd>UTF-8</dd>"
+        f"<dt>Max size</dt><dd>{MAX_UPLOAD_BYTES // (1024 * 1024)} MB</dd></dl>",
+        unsafe_allow_html=True,
+    )
+    st.write("")
+    section_title("What happens next")
+    st.markdown(
+        '<ul class="ia-list"><li>The file is submitted once and tracked by its workflow ID.</li>'
+        "<li>Details are extracted and checked against vendors, purchase orders and duplicates.</li>"
+        "<li>The invoice is completed, held for approval, or sent to a review case.</li></ul>",
+        unsafe_allow_html=True,
+    )
 
 # --------------------------------------------------------------- tracking
 def tracker():
@@ -222,6 +256,12 @@ def tracker():
         state.proc_finished = True
         st.rerun()
 
+    stepper([
+        ("Submitted", "done", "File received"),
+        ("Processing", "active", "Extraction and validation"),
+        ("Result", "pending", ""),
+    ])
+
     if workflow is None:
         st.info("Queued: waiting for the workflow to start...")
     else:
@@ -239,6 +279,11 @@ def render_outcome():
     workflow = state.proc_workflow
 
     if workflow is None:
+        stepper([
+            ("Submitted", "done", "File received"),
+            ("Processing", "warning", "No workflow state seen"),
+            ("Result", "pending", ""),
+        ])
         st.warning(
             "No workflow state appeared within 2 minutes. The background "
             "task may have failed. Check the uvicorn terminal for "
@@ -258,10 +303,26 @@ def render_outcome():
     else:
         state_text = "Completed"
 
+    needs_person = bool(
+        workflow.get("approval_required")
+        or workflow.get("review_case_id")
+        or status == "human_review"
+    )
+    result_tone = "danger" if failed else ("warning" if needs_person else "success")
+
+    stepper([
+        ("Submitted", "done", "File received"),
+        ("Processing", "done", "Extraction and validation"),
+        ("Result", result_tone, state_text),
+    ])
+
     c1, c2, c3 = st.columns(3)
-    c1.metric("Workflow status", get_status_label(status) if status else "-")
-    c2.metric("Invoice ID", workflow.get("invoice_id") or "-")
-    c3.metric("Workflow state", state_text)
+    with c1:
+        kpi_card("Workflow status", get_status_label(status) if status else "-", small=True)
+    with c2:
+        kpi_card("Invoice ID", workflow.get("invoice_id") or "-", small=True)
+    with c3:
+        kpi_card("Workflow state", state_text, tone=result_tone, small=True)
 
     if workflow.get("submission_id"):
         ledger = str(workflow.get("submission_status") or "unknown").replace("_", " ")
@@ -303,25 +364,33 @@ def render_outcome():
             st.error(f"Could not load invoice details: {exc.message}")
         else:
             st.divider()
-            st.subheader("Extraction and validation results")
+            section_title("Extraction and validation results")
             render_invoice_detail(detail, compact=True)
     elif not failed and not workflow.get("review_case_id"):
         st.info("No invoice record was created for this submission.")
 
+    # Validation checks come from the workflow state already loaded above.
+    if workflow.get("validation_report"):
+        st.divider()
+        section_title("Validation results", "Checks run against vendors, purchase orders and duplicates.")
+        render_validation_report(workflow.get("validation_report"))
+
+
 
 if state.proc_thread_id:
-    st.divider()
-    st.subheader("Workflow")
-    st.caption(f"File: {state.proc_filename}")
+    st.write("")
+    with st.container(key="card_workflow"):
+        section_title("Workflow", "Live status of this submission.")
+        field_grid([("File", state.proc_filename)])
 
-    if state.proc_notice:
-        kind, text = state.proc_notice
-        getattr(st, kind)(text)
+        if state.proc_notice:
+            kind, text = state.proc_notice
+            getattr(st, kind)(text)
 
-    st.write("**Workflow ID**")
-    st.code(state.proc_thread_id, language=None)
+        st.caption("Workflow ID")
+        st.code(state.proc_thread_id, language=None)
 
-    if not state.proc_finished:
-        st.fragment(run_every=POLL_SECONDS)(tracker)()
-    else:
-        render_outcome()
+        if not state.proc_finished:
+            st.fragment(run_every=POLL_SECONDS)(tracker)()
+        else:
+            render_outcome()
